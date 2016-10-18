@@ -25,12 +25,15 @@ public class ServletBenvenuto extends HttpServlet {
 		response.setContentType("text/html");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+	
 		if(password.equals("123")){
-			RequestDispatcher rd = request.getRequestDispatcher("Servlet2");
-			rd.forward(request, response);
+			RequestDispatcher rd1 = request.getRequestDispatcher("Servlet2");
+			rd1.forward(request, response);
 		} else {
-			response.sendRedirect("login.html");
+			RequestDispatcher rd2 = request.getRequestDispatcher("login.html");
+			PrintWriter wr = response.getWriter();
+			wr.println("Username o Password ERRATO!");
+			rd2.include(request, response);
 		}
 		
 	}
