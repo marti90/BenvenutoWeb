@@ -25,10 +25,11 @@ public class ServletBenvenuto extends HttpServlet {
 		String username = (request.getParameter("username")+"<br>");
 		String password = (request.getParameter("password")+"<br>");
 		
-		PrintWriter wr = response.getWriter();
+		//PrintWriter wr = response.getWriter();
 		
 		if(password.equals("123")){
-			wr.println("Benvenuto"+username);
+			//wr.println("Benvenuto"+username);
+			response.sendRedirect("benvenuto.html");
 		} else {
 			response.sendRedirect("login.html");
 		}
