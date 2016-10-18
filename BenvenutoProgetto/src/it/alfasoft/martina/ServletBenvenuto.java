@@ -27,8 +27,10 @@ public class ServletBenvenuto extends HttpServlet {
 		String password = request.getParameter("password");
 	
 		if(password.equals("123")){
-			RequestDispatcher rd1 = request.getRequestDispatcher("Servlet2");
-			rd1.forward(request, response);
+			RequestDispatcher rd1 = request.getRequestDispatcher("ServletTabella");
+			PrintWriter wr = response.getWriter();
+			wr.println("Username e Password sono CORRETTI!");
+			rd1.include(request, response);
 		} else {
 			RequestDispatcher rd2 = request.getRequestDispatcher("login.html");
 			PrintWriter wr = response.getWriter();
