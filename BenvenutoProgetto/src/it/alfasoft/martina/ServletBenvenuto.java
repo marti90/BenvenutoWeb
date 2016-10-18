@@ -1,6 +1,8 @@
 package it.alfasoft.martina;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +20,18 @@ public class ServletBenvenuto extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		response.setContentType("text/html");
+		String username = (request.getParameter("username")+"<br>");
+		String password = (request.getParameter("password")+"<br>");
+		
+		PrintWriter wr = response.getWriter();
+		
+		if(password.equals("123")){
+			wr.println("Benvenuto"+username);
+		} else {
+			response.sendRedirect("login.html");
+		}
+		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
 }
